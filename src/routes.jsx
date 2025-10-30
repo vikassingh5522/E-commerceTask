@@ -10,6 +10,19 @@ import Account from "./pages/Account";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import { useAuth } from "./context/AuthContext"; 
+
+
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+
+  if (!user) {
+    
+    return <Navigate to="/account" replace />;
+  }
+
+  return children;
+};
 
 
 const AppRoutes = () => {
