@@ -10,7 +10,8 @@ const Furniture = () => {
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cartItems } = useContext(CartContext);
+
   useEffect(() => {
     const fetchFurniture = async () => {
       try {
@@ -18,11 +19,13 @@ const Furniture = () => {
         const furnitureCategory = categories.find(
           (cat) => cat.name.toLowerCase() === "furniture"
         );
+
         if (!furnitureCategory) {
           console.warn("🪑 Furniture category not found!");
           setProducts([]);
           return;
         }
+
         const { data } = await getProductsByCategory(furnitureCategory.id);
         setProducts(data);
         setFiltered(data);
@@ -32,22 +35,21 @@ const Furniture = () => {
         setLoading(false);
       }
     };
+
     fetchFurniture();
   }, []);
 
   useEffect(() => {
-    setFiltered(
-      products.filter((p) =>
-        p.title?.toLowerCase().includes(search.toLowerCase())
-      )
-    );
+    const searchText = search.toLowerCase();
+    setFiltered(products.filter((p) => p.title?.toLowerCase().includes(searchText)));
   }, [search, products]);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />    
-      <h2 className="text-center text-2xl font-semibold mt-8">
-        Furniture
+      <Navbar />
+
+      <h2 className="text-center text-3xl font-semibold mt-8 text-gray-800 tracking-tight">
+        Furniture 
       </h2>
 
       <div className="flex justify-center mt-4 mb-6">
@@ -56,20 +58,25 @@ const Furniture = () => {
           placeholder="Search furniture..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border border-gray-300 shadow-sm px-4 py-2 rounded-lg w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 shadow-sm px-4 py-2 rounded-lg w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
       </div>
+
       <div className="px-6 py-10">
         {loading ? (
           <Loader />
         ) : filtered.length > 0 ? (
-          <ProductList products={filtered} onAddToCart={addToCart} />
+          <ProductList
+            products={filtered}
+            onAddToCart={addToCart}
+            cartItems={cartItems}
+          />
         ) : (
           <div className="flex flex-col items-center justify-center py-16 text-gray-500 animate-pulse">
-            <span className="text-7xl mb-4">🪑</span>
+            <span className="text-7xl mb-4">🛋️</span>
             <p className="text-lg font-medium">No furniture available right now</p>
             <p className="text-sm text-gray-400 mt-1">
-              Please check back later 🛋️
+              Please check back later — comfy vibes coming soon 🪑
             </p>
           </div>
         )}

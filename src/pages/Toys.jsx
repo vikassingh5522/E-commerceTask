@@ -75,7 +75,7 @@ const Toys = () => {
             <span className="text-7xl mb-4">🧸</span>
             <p className="text-lg font-medium">No toys available right now</p>
             <p className="text-sm text-gray-400 mt-1">
-              Check back later for new arrivals 🎁
+              Check back later for new arrivals 
             </p>
           </div>
         )}

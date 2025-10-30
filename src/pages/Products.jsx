@@ -7,17 +7,15 @@ import { getProducts } from "../api/api";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cartItems } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const res = await getProducts();
-        setProducts(res.data);
-        setFiltered(res.data);
+        setProducts(res.data || []);
       } catch (err) {
         console.error("Error loading products:", err);
       } finally {
@@ -27,22 +25,20 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    setFiltered(
-      products.filter((p) =>
-        p.title?.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search, products]);
+  
+  const filtered = products.filter((p) =>
+    p.title?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
-
+   
       <Navbar />
 
-
-      <h2 className="text-center text-2xl font-semibold mt-8">All Products</h2>
-
+     
+      <h2 className="text-center text-2xl font-semibold mt-8">
+        All Products
+      </h2>
 
       <div className="flex justify-center mt-4 mb-6">
         <input
@@ -54,12 +50,15 @@ const Products = () => {
         />
       </div>
 
-
       <div className="px-6 py-10">
         {loading ? (
           <Loader />
         ) : filtered.length > 0 ? (
-          <ProductList products={filtered} onAddToCart={addToCart} />
+          <ProductList
+            products={filtered}
+            onAddToCart={addToCart}
+            cartItems={cartItems} 
+          />
         ) : (
           <div className="flex flex-col items-center justify-center py-16 text-gray-500 animate-pulse">
             <span className="text-7xl mb-4">🛍️</span>

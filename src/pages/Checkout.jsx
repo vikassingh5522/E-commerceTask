@@ -8,15 +8,12 @@ import Navbar from "../components/Navbar";
 const Checkout = () => {
   const { cartItems, clearCart, getTotal } = useContext(CartContext);
   const navigate = useNavigate();
-
   const totalPrice = getTotal();
-
   const handlePlaceOrder = () => {
     if (cartItems.length === 0) {
       alert("Your cart is empty!");
       return;
     }
-
     const orderDetails = {
       items: cartItems,
       total: totalPrice,
