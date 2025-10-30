@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { updateProfile } from "firebase/auth";
-import Navbar from "../components/Navbar"; 
+import Navbar from "../components/Navbar";
 
 const Account = () => {
   const { user, signUp, login, logout } = useAuth();
@@ -32,11 +32,11 @@ const Account = () => {
     }
   };
 
-  
+
   if (user) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Navbar /> 
+        <Navbar />
         <div className="flex flex-col items-center justify-center px-4 py-16">
           <div className="bg-white p-8 rounded-2xl shadow-lg text-center max-w-sm w-full">
             <h2 className="text-2xl font-bold mb-2">
@@ -58,7 +58,7 @@ const Account = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar /> 
+      <Navbar />
 
       <div className="flex flex-col items-center justify-center px-4 py-16">
         <div className="bg-white p-8 rounded-2xl shadow-lg max-w-sm w-full">

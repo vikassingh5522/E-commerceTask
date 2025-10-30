@@ -1,16 +1,49 @@
-# React + Vite
+# 🛍️ E-Commerce Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully functional E-Commerce Web Application built using React.js, Firebase, and Tailwind CSS.  
+This project demonstrates product listing, search, category-based filtering, shopping cart functionality, and a checkout process — all with a modern and responsive UI.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Frontend: 
+- React.js (Functional Components + Hooks)
+- Tailwind CSS (UI Styling)
+- Lucide Icons (Modern SVG icons)
 
-## React Compiler
+Backend & Database:
+- Firebase Authentication (User Sign In / Sign Up)
+- Firebase Firestore (Product & Cart Data)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Routing:
+- React Router DOM v6
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+User Authentication – Login / Signup using Firebase  
+Product Listing – Fetches products dynamically from API  
+Category Filtering – View items by category (e.g. Clothes, Electronics, etc.)  
+Search Functionality – Real-time filtering by product name  
+Cart Management – Add / Remove items from cart  
+Checkout Page – Simple and clean order summary  
+Responsive Design – Works perfectly on mobile, tablet, and desktop  
+Modern UI – Smooth transitions, hover effects, and clean typograph
+
+Install dependencies
+
+npm install
+
+
+Setup Firebase
+
+Go to Firebase Console
+
+Create a new project
+
+Enable Authentication & Firestore
+
+Copy your Firebase config and paste it in firebase.js
+
+Run the project
+
+npm run dev
+
