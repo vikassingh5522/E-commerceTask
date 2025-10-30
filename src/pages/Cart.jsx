@@ -12,7 +12,6 @@ const Cart = () => {
       <div className="w-full max-w-3xl bg-white rounded-2xl shadow-md p-6">
         <h2 className="text-3xl font-bold text-center mb-6">🛒 Shopping Cart</h2>
 
-        {/* Empty Cart */}
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-500 animate-pulse">
             <span className="text-7xl mb-4">🛍️</span>
@@ -23,7 +22,6 @@ const Cart = () => {
           </div>
         ) : (
           <>
-            {/* Cart Items */}
             <div className="divide-y divide-gray-200 mb-6">
               {cartItems.map((item) => (
                 <div key={item.id} className="py-4">
@@ -31,8 +29,6 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-
-            {/* Total + Checkout */}
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-6 border-t pt-4">
               <p className="font-semibold text-xl">
                 Total: <span className="text-blue-600">${total.toFixed(2)}</span>

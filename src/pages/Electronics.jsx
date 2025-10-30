@@ -46,7 +46,6 @@ const Electronics = () => {
       )
     );
   }, [search, products]);
-
   return (
     <div className="min-h-screen bg-gray-50">
      
@@ -63,8 +62,6 @@ const Electronics = () => {
           className="border border-gray-300 shadow-sm px-4 py-2 rounded-lg w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-
-     
       <div className="px-6 py-10">
         {loading ? (
           <Loader />

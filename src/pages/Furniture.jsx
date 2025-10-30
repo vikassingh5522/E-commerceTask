@@ -11,7 +11,6 @@ const Furniture = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
-
   useEffect(() => {
     const fetchFurniture = async () => {
       try {
@@ -19,13 +18,11 @@ const Furniture = () => {
         const furnitureCategory = categories.find(
           (cat) => cat.name.toLowerCase() === "furniture"
         );
-
         if (!furnitureCategory) {
           console.warn("🪑 Furniture category not found!");
           setProducts([]);
           return;
         }
-
         const { data } = await getProductsByCategory(furnitureCategory.id);
         setProducts(data);
         setFiltered(data);
@@ -35,7 +32,6 @@ const Furniture = () => {
         setLoading(false);
       }
     };
-
     fetchFurniture();
   }, []);
 
@@ -49,10 +45,7 @@ const Furniture = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-   
-      <Navbar />
-
-    
+      <Navbar />    
       <h2 className="text-center text-2xl font-semibold mt-8">
         Furniture
       </h2>
@@ -66,8 +59,6 @@ const Furniture = () => {
           className="border border-gray-300 shadow-sm px-4 py-2 rounded-lg w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-
-    
       <div className="px-6 py-10">
         {loading ? (
           <Loader />

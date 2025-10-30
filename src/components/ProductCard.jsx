@@ -9,13 +9,11 @@ const ProductCard = ({ product, onAddToCart }) => {
         alt={product.title}
         className="w-full h-52 object-cover"
       />
-
       <div className="p-4">
         <p className="text-sm text-gray-500">{product.category.name}</p>
         <h3 className="text-md font-semibold truncate">{product.title}</h3>
         <p className="text-gray-800 font-bold mt-1">${product.price}</p>
       </div>
-
       <button
         onClick={() => onAddToCart(product)}
         className="absolute top-2 right-2 bg-white p-1 rounded-full shadow hover:bg-gray-100"

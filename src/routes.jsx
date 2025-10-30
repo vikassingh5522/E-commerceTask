@@ -7,6 +7,7 @@ import Electronics from "./pages/Electronics";
 import Furniture from "./pages/Furniture";
 import Toys from "./pages/Toys";
 import Account from "./pages/Account";
+import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
          <Route path="/account" element={<Account />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </BrowserRouter>
   );

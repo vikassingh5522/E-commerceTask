@@ -4,28 +4,22 @@ import { updateProfile } from "firebase/auth";
 
 const Account = () => {
   const { user, signUp, login, logout } = useAuth();
-
   const [name, setName] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (isSignUp) {
-     
         const userCredential = await signUp(email, password);
-    
         await updateProfile(userCredential.user, {
           displayName: name,
         });
       } else {
         await login(email, password);
       }
-
-     
       setName("");
       setEmail("");
       setPassword("");
@@ -34,8 +28,6 @@ const Account = () => {
       setError(err.message);
     }
   };
-
-  
   if (user) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
@@ -54,8 +46,6 @@ const Account = () => {
       </div>
     );
   }
-
-  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
       <div className="bg-white p-8 rounded-2xl shadow-md max-w-sm w-full">

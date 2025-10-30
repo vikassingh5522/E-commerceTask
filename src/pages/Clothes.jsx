@@ -19,13 +19,11 @@ const Clothes = () => {
         const clothesCategory = categories.find(
           (cat) => cat.name.toLowerCase() === "clothes"
         );
-
         if (!clothesCategory) {
           console.warn("❌ Clothes category not found!");
           setProducts([]);
           return;
         }
-
         const { data } = await getProductsByCategory(clothesCategory.id);
         setProducts(data);
         setFiltered(data);
@@ -37,7 +35,6 @@ const Clothes = () => {
     };
     fetchClothes();
   }, []);
-
   useEffect(() => {
     setFiltered(
       products.filter((p) =>
@@ -48,11 +45,8 @@ const Clothes = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-    
       <Navbar />
-
       <h2 className="text-center text-2xl font-semibold mt-8">Clothes</h2>
-
       <div className="flex justify-center mt-4 mb-6">
         <input
           type="text"
@@ -62,7 +56,6 @@ const Clothes = () => {
           className="border border-gray-300 shadow-sm px-4 py-2 rounded-lg w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-
       <div className="px-6 py-10">
         {loading ? (
           <Loader />
