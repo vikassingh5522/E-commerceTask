@@ -9,14 +9,15 @@ const Orders = () => {
   const [form, setForm] = useState({ fullName: "", address: "", total: "" });
   const [loading, setLoading] = useState(true);
 
+  
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("orders")) || [];
-    setOrders(saved);
+    const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    setOrders(savedOrders);
   }, []);
 
- 
   useEffect(() => {
-    const fetchPrices = async () => {
+    const fetchLatestPrices = async () => {
+      if (!orders.length) return setLoading(false);
       try {
         const updated = await Promise.all(
           orders.map(async (o) => {
@@ -29,15 +30,15 @@ const Orders = () => {
         setOrders(updated);
         localStorage.setItem("orders", JSON.stringify(updated));
       } catch (err) {
-        console.error("Error fetching prices:", err);
+        console.error("Error updating product prices:", err);
       } finally {
         setLoading(false);
       }
     };
-    orders.length ? fetchPrices() : setLoading(false);
+
+    fetchLatestPrices();
   }, [orders.length]);
 
- 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const updateOrders = (newOrders) => {
@@ -64,7 +65,7 @@ const Orders = () => {
       <Navbar />
       <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
         <div className="w-full max-w-3xl flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">My Orders</h1>
+          <h1 className="text-3xl font-bold">📦 My Orders</h1>
           {!!orders.length && (
             <button
               onClick={deleteAll}
@@ -76,7 +77,7 @@ const Orders = () => {
         </div>
 
         {loading ? (
-          <p className="text-gray-500 mt-10">Loading latest prices...</p>
+          <p className="text-gray-500 mt-10">Fetching latest prices...</p>
         ) : !orders.length ? (
           <div className="text-center mt-20">
             <img
