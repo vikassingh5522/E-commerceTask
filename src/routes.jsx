@@ -6,11 +6,10 @@ import Clothes from "./pages/Clothes";
 import Electronics from "./pages/Electronics";
 import Furniture from "./pages/Furniture";
 import Toys from "./pages/Toys";
-
+import Account from "./pages/Account";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+
 
 const AppRoutes = () => {
   return (
@@ -24,8 +23,7 @@ const AppRoutes = () => {
         <Route path="/toys" element={<Toys />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+         <Route path="/account" element={<Account />} />
       </Routes>
     </BrowserRouter>
   );
